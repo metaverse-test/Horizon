@@ -1,0 +1,12 @@
+{
+  "name": "Horizon",
+  "version": "1.0.0",
+  "description": "Serveur WebSocket temps réel du réseau social",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
