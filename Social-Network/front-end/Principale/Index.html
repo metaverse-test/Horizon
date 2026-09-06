@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+<header class="headerbar">
+  <div class="boxheader">
+    <img src="img"/>
+    <div class="divcontent">
+  <button id="searchIcon" type="button" aria-label="Rechercher">
+  <svg 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+
+    <circle 
+      cx="11" 
+      cy="11" 
+      r="7" 
+      stroke="currentColor" 
+      stroke-width="2"/>
+
+    <path 
+      d="M16 16L21 21"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"/>
+
+  </svg>
+</button>
+
+<input 
+  type="search" 
+  class="search" 
+  placeholder="quoi de neuf?"
+>
+</div>
+    </div>
+    <div>
+  <nav class="category-bar">
+  <button class="category active">Tous</button>
+  <button class="category">Tendances</button>
+  <button class="category">Nouveautés</button>
+  <button class="category">Populaires</button>
+    <button class="category">humour</button>
+  <button class="category">beauté-lifestyle</button>
+  <button class="category">Science-fiction</button>
+  <button class="category">film-serie</button>
+    <button class="category">sport</button>
+</nav>
+    </div>
+</header>
+  <main id="mainContent" class="content-box-poste">
+  </main>
+
+    <nav class="total-content">
+
+  <!-- Découvrir -->
+  <div class="nav-item">
+    <button class="buttong">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="23" height="23"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="black"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+      </svg>
+    </button>
+
+    <small>Découvrir</small>
+  </div>
+
+
+  <!-- Viewer -->
+  <div class="nav-item">
+    <button class="viewe">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="23"
+           height="23"
+           viewBox="0 0 50 50">
+
+        <rect x="2" y="2"
+              width="46"
+              height="46"
+              rx="8"
+              fill="none"
+              stroke="black"
+              stroke-width="3"/>
+
+        <path d="M20 15 L20 35 L36 25 Z"
+              fill="black"/>
+      </svg>
+    </button>
+
+    <small>Viewer</small>
+  </div>
+<!--macket-->
+    <a href="#" class="nav-item-macket" >
+  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <path d="M16 10a4 4 0 0 1-8 0" />
+</svg>
+
+<small>Shop</small>
+    </a>
+
+  <!-- Profil -->
+  <a href="#" class="nav-item profil">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="23"
+         height="23"
+         viewBox="0 0 24 24"
+         fill="black"
+         stroke="black"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </svg>
+
+    <small>Profil</small>
+  </a>
+
+</nav>
+
+
+ 
+    <script src="back-end/script.js"></script>
+  </body>
+</html>
