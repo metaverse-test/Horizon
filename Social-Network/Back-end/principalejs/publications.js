@@ -7,11 +7,11 @@ const API_PUBLICATIONS =
 
 
 // ==========================================
-// ÉLÉMENT DU FEED
+// CONTENEUR PRINCIPAL
 // ==========================================
 
-const feed =
-    document.getElementById("feed");
+const mainContent =
+    document.getElementById("mainContent");
 
 
 // ==========================================
@@ -20,24 +20,22 @@ const feed =
 
 async function loadPublications() {
 
-    if (!feed) {
+    if (!mainContent) {
         console.error(
-            "❌ L'élément #feed est introuvable."
+            "❌ #mainContent introuvable."
         );
         return;
     }
 
     try {
 
-        feed.innerHTML =
+        mainContent.innerHTML =
             "<p>Chargement des publications...</p>";
 
 
         const response =
             await fetch(API_PUBLICATIONS);
 
-
-        // Vérification HTTP
 
         if (!response.ok) {
 
@@ -53,16 +51,14 @@ async function loadPublications() {
 
 
         console.log(
-            "📚 Publications Xano :",
+            "📚 Publications reçues depuis Xano :",
             publications
         );
 
 
-        // ======================================
-        // VIDER LE FEED
-        // ======================================
+        // Vider le contenu actuel
 
-        feed.innerHTML = "";
+        mainContent.innerHTML = "";
 
 
         // ======================================
@@ -74,7 +70,7 @@ async function loadPublications() {
             publications.length === 0
         ) {
 
-            feed.innerHTML =
+            mainContent.innerHTML =
                 "<p>Aucune publication pour le moment.</p>";
 
             return;
@@ -93,7 +89,7 @@ async function loadPublications() {
                         publication
                     );
 
-                feed.appendChild(card);
+                mainContent.appendChild(card);
 
             }
         );
@@ -102,22 +98,19 @@ async function loadPublications() {
     } catch (error) {
 
         console.error(
-            "❌ Impossible de charger les publications :",
+            "❌ Erreur Xano :",
             error
         );
 
 
-        feed.innerHTML = `
-            <p>
-                ❌ Impossible de charger les publications.
-            </p>
-        `;
+        mainContent.innerHTML =
+            "<p>❌ Impossible de charger les publications.</p>";
     }
 }
 
 
 // ==========================================
-// CRÉER UNE CARTE DE PUBLICATION
+// CRÉER UNE CARTE
 // ==========================================
 
 function createPublicationCard(
@@ -132,20 +125,8 @@ function createPublicationCard(
         "publication-card";
 
 
-    // ======================================
-    // ID
-    // ======================================
-
     article.dataset.id =
         publication.id;
-
-
-    // ======================================
-    // CONTENU
-    // ======================================
-
-    const content =
-        publication.content || "";
 
 
     // ======================================
@@ -159,12 +140,19 @@ function createPublicationCard(
 
 
     // ======================================
+    // CONTENU
+    // ======================================
+
+    const content =
+        publication.content || "";
+
+
+    // ======================================
     // DATE
     // ======================================
 
     const date =
-        publication.created_at ||
-        "";
+        publication.created_at || "";
 
 
     article.innerHTML = `
@@ -214,14 +202,15 @@ function escapeHTML(value) {
 
 
 // ==========================================
-// AJOUTER UNE PUBLICATION AU FEED
+// AJOUTER UNE PUBLICATION
+// Utilisé par WebSocket
 // ==========================================
 
 function addPublication(
     publication
 ) {
 
-    if (!feed) {
+    if (!mainContent) {
         return;
     }
 
@@ -232,34 +221,31 @@ function addPublication(
         );
 
 
-    feed.prepend(card);
-
+    mainContent.prepend(card);
 }
 
 
 // ==========================================
 // MODIFIER UNE PUBLICATION
+// Utilisé par WebSocket
 // ==========================================
 
 function updatePublication(
     publication
 ) {
 
-    if (!feed) {
+    if (!mainContent) {
         return;
     }
 
 
     const oldCard =
-        feed.querySelector(
+        mainContent.querySelector(
             `[data-id="${publication.id}"]`
         );
 
 
     if (!oldCard) {
-
-        // Si elle n'existe pas encore,
-        // on l'ajoute.
 
         addPublication(
             publication
@@ -278,25 +264,25 @@ function updatePublication(
     oldCard.replaceWith(
         newCard
     );
-
 }
 
 
 // ==========================================
 // SUPPRIMER UNE PUBLICATION
+// Utilisé par WebSocket
 // ==========================================
 
 function removePublication(
     publicationId
 ) {
 
-    if (!feed) {
+    if (!mainContent) {
         return;
     }
 
 
     const card =
-        feed.querySelector(
+        mainContent.querySelector(
             `[data-id="${publicationId}"]`
         );
 
@@ -306,7 +292,6 @@ function removePublication(
         card.remove();
 
     }
-
 }
 
 
