@@ -288,4 +288,4 @@ function handleWebSocketMessage(data) {
 // LANCER LA CONNEXION
 // ==========================================
 
-connectWebSocket();
+connectWebSCONNEXION
